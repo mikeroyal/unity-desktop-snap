@@ -1,7 +1,7 @@
-name: budgie-desktop
-version: 10.5
-summary: Budgie Desktop Environment. 
-description: a feature-rich, modern desktop designed to keep out the way of the user.
+name: unity-desktop
+version: '7.5'
+summary: Unity Desktop Environment. 
+description: a graphical shell for the GNOME desktop environment.
   
 grade: stable
 confinement: devmode
@@ -28,13 +28,14 @@ plugs:
     default-provider: gtk-common-themes
 
 apps:
-  budgie-desktop:
+  unity-desktop:
     command: bash
     plugs:
        - desktop
       #      - desktop-legacy
       #      - gsettings
       - network
+      - unity7
       - x11
       
 parts:
@@ -53,9 +54,9 @@ parts:
       - CMAKE_INCLUDE_PATH: $CMAKE_INCLUDE_PATH:$SNAPCRAFT_STAGE/include:$SNAPCRAFT_STAGE/usr/include
       - CMAKE_LIBRARY_PATH: $CMAKE_LIBRARY_PATH:$SNAPCRAFT_STAGE/lib:$SNAPCRAFT_STAGE/usr/lib:$SNAPCRAFT_STAGE/usr/lib/$SNAPCRAFT_ARCH_TRIPLET
  
- budgie-desktop:
+ unity-desktop:
     plugin: 
-    source: https://github.com/solus-project/budgie-desktop.git
+    source: https://github.com/3v1n0/unity.git
     source-type: git
     override-pull: |
       snapcraftctl pull
@@ -95,6 +96,7 @@ gtk:
         sed -i 's#libdir=#libdir=$SNAPCRAFT_STAGE#' $DST
         sed -i 's#includedir=#includedir=$SNAPCRAFT_STAGE#' $DST
       done
+      
     build-packages:
       - libtool
       - gtk-doc-tools
@@ -140,6 +142,7 @@ gtk:
       cp $SRC $DST
       sed -i 's#libdir=#libdir=$SNAPCRAFT_STAGE#' $DST
       sed -i 's#includedir=#includedir=$SNAPCRAFT_STAGE#' $DST
+      
     build-packages:
       - libdbus-1-dev
       - libxkbcommon-x11-dev
@@ -164,6 +167,7 @@ gtk:
       cp $SRC $DST
       sed -i 's#libdir=#libdir=$SNAPCRAFT_STAGE#' $DST
       sed -i 's#includedir=#includedir=$SNAPCRAFT_STAGE#' $DST
+      
     build-packages:
       - libdbus-1-dev
       - libdbus-glib-1-dev
@@ -274,6 +278,7 @@ gtk:
       cp $SRC $DST
       sed -i 's#libdir=#libdir=$SNAPCRAFT_STAGE#' $DST
       sed -i 's#includedir=#includedir=$SNAPCRAFT_STAGE#' $DST
+      
     build-packages:
       - libx11-dev
       - libpng-dev
@@ -341,6 +346,7 @@ gtk:
         sed -i 's#libdir=#libdir=$SNAPCRAFT_STAGE#' $DST
         sed -i 's#includedir=#includedir=$SNAPCRAFT_STAGE#' $DST
       done
+      
     build-packages:
       - libfontconfig1-dev
       - libfreetype6-dev
