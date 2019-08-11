@@ -28,10 +28,6 @@ export LD_LIBRARY_PATH=$SNAP/usr/lib/$ARCH/mesa-egl:$LD_LIBRARY_PATH
 # XDG Config
 export XDG_CONFIG_DIRS=$SNAP/etc/xdg:$SNAP/etc/xdg:$XDG_CONFIG_DIRS
 
-# Note: this doesn't seem to work, QML's LocalStorage either ignores
-# or fails to use $SNAP_USER_DATA if defined here
-export XDG_DATA_DIRS=$SNAP/usr/local/share:$SNAP/usr/share:$SNAP/usr/local/share:$SNAP/usr/share:$XDG_DATA_DIRS
-
 # Font Config
 export FONTCONFIG_PATH=$SNAP/etc/fonts/config.d
 export FONTCONFIG_FILE=$SNAP/etc/fonts/fonts.conf
